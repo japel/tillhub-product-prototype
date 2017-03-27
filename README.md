@@ -23,9 +23,12 @@ But if you want to test this with a "real" database configure your connection at
 
 ## Relevant files
 Frontend code is located at ./assets/app
-Backend code:
+
+### Backend code:
 Backend code is almost non existent, as Sails.js provides automatic [blueprints](https://github.com/balderdashy/sails/tree/master/lib/hooks/blueprints/actions) for CRUD (which this prototype utilizes).
+
 But if you feel curious you can uncomment ./api/controllers/ProductController.js and restart the server to see my code in action.
+
 Backend Validation is done by waterline (Sails default ORM) and the validation rules are in the model: ./api/models/Product.js
 ./config/bootstrap.js takes care of adding 5 dummy products while starting the server. The database is cleared on every server start, if this is not wanted, change the migrate attribute value at ./config/models.js to 'alter'
 
