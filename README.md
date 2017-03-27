@@ -41,6 +41,8 @@ Backend Validation is done by waterline (Sails default ORM) and the validation r
 
 ### get products:
 curl -XGET 'localhost:1337/api/product'
+### get products sorted by currency ascending:
+curl -XGET 'localhost:1337/api/product?sort=currency%20ASC'
 ### get products sorted by price descending:
 curl -XGET 'localhost:1337/api/product?sort=price%20DESC'
 ### get products sorted by name ascending:
