@@ -11,11 +11,13 @@
 
 const Bluebird = require('bluebird');
 const faker = require('faker');
-const dummyData = []; //require('../dummyData.json').slice(0, 30);
 
 module.exports.bootstrap = function (cb) {
+  let dummyData = [];
 
-  for (var i = 0; i < 5; i++) {
+  let i;
+
+  for (i = 0; i < 5; i++) {
     dummyData.push({
       name: faker.fake("{{commerce.productName}}"),
       description: faker.fake("{{hacker.phrase}}"),
