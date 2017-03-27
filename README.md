@@ -37,27 +37,17 @@ Backend Validation is done by waterline (Sails default ORM) and the validation r
 
 ## Some curl for testing:
 
-get products:
+### get products:
 curl -XGET 'localhost:1337/api/product'
-
-get products sorted by price descending:
-
+### get products sorted by price descending:
 curl -XGET 'localhost:1337/api/product?sort=price%20DESC'
-
-get products sorted by name ascending:
-
+### get products sorted by name ascending:
 curl -XGET 'localhost:1337/api/product?sort=name%20ASC'
-
-get products with names that start with 'G':
-
+### get products with names that start with 'G':
 curl -G -XGET 'localhost:1337/api/product' --data-urlencode 'where={"name":{"startsWith":"G"}}'
-
-get products with price > 30000:
-
+### get products with price > 30000:
 curl -G -XGET 'localhost:1337/api/product' --data-urlencode 'where={"price":{">":"30000"}}'
-
-get product with id 1:
-
+### get product with id 1:
 curl -XGET 'localhost:1337/api/product/1'
 
 ...
