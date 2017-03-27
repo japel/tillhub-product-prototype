@@ -17,6 +17,8 @@ To run this you will need typescript compiler and npm/node installed and setup.
 
 `sails lift`
 
+browse to `http://localhost:1337`
+
 ## Database Setup
 It is not necessary to setup a database, this prototype uses a "localDiskDb". (./.tmp/localDiskDb.db)
 But if you want to test this with a "real" database configure your connection at ./config/connections.js and change the connection attribute value at ./config/models.js to the name of your previously configured connection.
