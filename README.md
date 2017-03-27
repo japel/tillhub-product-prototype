@@ -15,7 +15,7 @@ To run this you will need typescript compiler and npm/node installed and setup.
 
 `tsc`
 
-`sails lift`
+`npm start`
 
 browse to `http://localhost:1337`
 
