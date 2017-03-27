@@ -1,0 +1,68 @@
+<h2>Products</h2>
+<div>
+  <form class="product_add_form">
+		<ul>
+			<li>
+				<h3>Create new product:</h3>
+				<span class="validation">fields marked with * are required Field</span>
+			</li>
+			<li>
+				<label for="name">* name: </label>
+				<input type="text" ngModel placeholder="name" id="name" name="name" #name="ngModel" required/>
+				<p class="validation" *ngIf="name.errors?.required && name.touched">field name is required</p><br/>
+			</li>
+			<li>
+				<label for="description">* description: </label>
+				<textarea id="description" name="description" ngModel placeholder="description" #description="ngModel" maxlength="540" required></textarea>
+				<p class="validation" *ngIf="description.errors?.maxlength && description.touched">description too long, max 540 chars.</p>
+				<p class="validation" *ngIf="description.errors?.required && description.touched">description field is required.</p><br/>
+			</li>
+			<li>
+				<label for="price">* price: </label>
+				<input type="number" ngModel placeholder="price" id="price" name="price" #price="ngModel" [min]="0" required/>
+				<p class="validation" *ngIf="price.errors?.min && price.touched">minimum price has to be 0</p>
+				<p class="validation" *ngIf="price.errors?.required && price.touched">field price is required</p><br/>
+			</li>
+			<li>
+				<label for="currency">* currency: </label>
+				<input type="text" ngModel placeholder="currency" id="currency" name="currency" #currency="ngModel" minlength="3"
+							 maxlength="3" required/>
+				<p class="validation" *ngIf="currency.errors?.required && currency.touched">field currency is required</p>
+				<p class="validation" *ngIf="currency.errors?.minlength && currency.touched">currency value must be of length 3</p>
+				<p class="validation" *ngIf="currency.errors?.maxlength && currency.touched">currency value must be of length 3</p><br/>
+			</li>
+			<li>
+				<button class="submit"
+								(click)="add({name:name.value,description:description.value,price: price.value,currency: currency.value}); name.value='';description.value='';price.value='';currency.value='';">
+					Add
+				</button>
+			</li>
+		</ul>
+
+	</form>
+</div>
+<div class="productList">
+	<div class="product_add_form">
+		<ul>
+			<li>
+				<h3>Product list:</h3>
+			</li>
+			<li>
+	<label for="search">Search filter:</label> <input id="search" type="text" [(ngModel)]="term"/>
+			</li>
+		</ul>
+	</div>
+	<ul class="products">
+		<li *ngFor="let product of products |filter:term"
+				[class.selected]="product === selectedProduct"
+				[routerLink]="['/detail', product.id]"
+				(click)="onSelect(product)">
+			<div class="left"><span class="badge">{{product.id}}</span></div>
+			<div class="right"><span>name: {{product.name}}</span><br/>
+				<span class="attrs">price: {{product.price}} {{product.currency}}</span></div>
+			<button class="delete"
+							(click)="delete(product); $event.stopPropagation()">x
+			</button>
+		</li>
+	</ul>
+</div>

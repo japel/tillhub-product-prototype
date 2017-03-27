@@ -1,0 +1,41 @@
+<div *ngIf="product">
+	<form class="product_add_form">
+		<ul>
+			<li>
+				<h3>{{product.name}} details:</h3>
+				<span class="validation">fields marked with * are required Field</span>
+			</li>
+			<li>
+				<label for="name">* name: </label>
+				<input type="text" [(ngModel)]="product.name" placeholder="name" id="name" name="name" #name="ngModel" required/>
+				<p class="validation" *ngIf="name.errors?.required && name.touched">field name is required</p><br/>
+			</li>
+			<li>
+				<label for="description">* description: </label>
+				<textarea id="description" name="description" [(ngModel)]="product.description" placeholder="description" #description="ngModel" maxlength="540" required></textarea>
+				<p class="validation" *ngIf="description.errors?.maxlength && description.touched">description too long, max 540 chars.</p>
+				<p class="validation" *ngIf="description.errors?.required && description.touched">description field is required.</p><br/>
+			</li>
+			<li>
+				<label for="price">* price: </label>
+				<input type="number" [(ngModel)]="product.price" placeholder="price" id="price" name="price" #price="ngModel" [min]="0" required/>
+				<p class="validation" *ngIf="price.errors?.min && price.touched">minimum price has to be 0</p>
+				<p class="validation" *ngIf="price.errors?.required && price.touched">field price is required</p><br/>
+			</li>
+			<li>
+				<label for="currency">* currency: </label>
+				<input type="text" [(ngModel)]="product.currency" placeholder="currency" id="currency" name="currency" #currency="ngModel" minlength="3"
+							 maxlength="3" required/>
+				<p class="validation" *ngIf="currency.errors?.required && currency.touched">field currency is required</p>
+				<p class="validation" *ngIf="currency.errors?.minlength && currency.touched">currency value must be of length 3</p>
+				<p class="validation" *ngIf="currency.errors?.maxlength && currency.touched">currency value must be of length 3</p><br/>
+			</li>
+			<li>
+				<button class="submit" (click)="save()">Save</button>
+				<button class="submit" (click)="goBack()">Back</button>
+			</li>
+		</ul>
+
+	</form>
+
+</div>
