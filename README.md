@@ -56,3 +56,12 @@ curl -G -XGET 'localhost:1337/api/product' --data-urlencode 'where={"price":{">"
 curl -XGET 'localhost:1337/api/product/1'
 
 ...
+
+## Used libraries
+- [sails.js](https://github.com/balderdashy/sails) as MVC framework
+- [waterline](https://github.com/balderdashy/waterline) as ORM
+- [sails-disk](https://github.com/balderdashy/sails-disk) as adapter for waterline
+- [ng2-search-filter](https://github.com/solodynamo/ng2-search-filter) for search filter
+- [ng2-validation](https://github.com/yuyang041060120/ng2-validation) for frontend validation
+- [Faker.js](https://github.com/Marak/Faker.js) for dummy data generation
+- [gruntjs](https://github.com/gruntjs/grunt) for building
