@@ -36,7 +36,7 @@ Backend Validation is done by waterline (Sails default ORM) and the validation r
 ./config/bootstrap.js takes care of adding 5 dummy products while starting the server. The database is cleared on every server start, if this is not wanted, change the migrate attribute value at ./config/models.js to 'alter'
 
 ## Additional information
-`sails lift` starts grunt which copies the transpiled ES5 code to ./.tmp/public/
+`npm start` starts grunt which copies the transpiled ES5 code to ./.tmp/public/
 
 ## Some curl for testing:
 
