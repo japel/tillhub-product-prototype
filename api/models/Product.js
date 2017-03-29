@@ -5,8 +5,10 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
-module.exports = {
+const cc = require('currency-codes');
 
+module.exports = {
+  schema: true,
   attributes: {
     name: {
       type: 'string',
@@ -18,7 +20,7 @@ module.exports = {
       required: true
     },
     price: {
-      type: 'integer',
+      type: 'float',
       min: 0,
       required: true
     },
@@ -26,7 +28,9 @@ module.exports = {
       type: 'string',
       minLength: 3,
       maxLength: 3,
-      required: true
+      required: true,
+      in: cc.codes(),
+      notNull: true
     }
 
   },

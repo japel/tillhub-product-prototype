@@ -11,6 +11,7 @@
 
 const Bluebird = require('bluebird');
 const faker = require('faker');
+const cc = require('currency-codes');
 
 module.exports.bootstrap = function (cb) {
   let dummyData = [];
@@ -18,11 +19,12 @@ module.exports.bootstrap = function (cb) {
   let i;
 
   for (i = 0; i < 5; i++) {
+    let ccLen = cc.codes().length;
     dummyData.push({
       name: faker.fake("{{commerce.productName}}"),
       description: faker.fake("{{hacker.phrase}}"),
-      price: faker.fake("{{random.number}}"),
-      currency: faker.fake("{{finance.currencyCode}}").substring(0,3)
+      price: parseFloat((Math.random() * (50000 - 0)).toFixed(2)),
+      currency: cc.codes()[[Math.floor(Math.random() * ccLen)]]
     });
   }
 
